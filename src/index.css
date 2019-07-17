@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.movie-card {
+  height: 15rem;
+  margin: 10px 0 10px 0;
+  padding: 5px;
+  border: 1px gainsboro solid;
+  border-radius: 5px;
+}
+
+.movie-card img {
+  height: 100%;
+}
+
+.movie-card-description {
+  height: 12rem;
+  overflow: auto;
+}
