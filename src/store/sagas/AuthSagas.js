@@ -11,8 +11,14 @@ export function* userLogin({ payload }) {
     yield put(authUser(true));
     yield put(push('/home'));
     yield put(go());
-  } catch (error) {
-    yield put(loginError(true));
+  } catch ({ response }) {
+    const errors = response.data.errors || response.data.error;
+
+    if(response.status === 401){
+      AuthService.api.unauthorizedCallback();
+    }
+
+    yield put(loginError(errors));
   }
 }
 
@@ -22,7 +28,9 @@ export function* userRegister({ payload }) {
 
     yield put(push('/login'));
     yield put(go());
-  } catch (error) {
-    yield put(registerError(true));
+  } catch ({ response }) {
+    const { errors } = response.data;
+
+    yield put(registerError(errors));
   }
 }

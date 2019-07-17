@@ -1,8 +1,8 @@
 import { LOGIN_ERROR, REGISTER_ERROR } from '../actions/ActionTypes';
 
 const initialState = {
-  loginError: false,
-  registerError: false
+  loginError: [],
+  registerError: []
 };
 
 const errorReducer = (state = initialState, action) => {

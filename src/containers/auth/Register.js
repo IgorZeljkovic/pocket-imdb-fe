@@ -8,7 +8,8 @@ class Register extends Component {
   state = {
     email: '',
     password: '',
-    name: ''
+    name: '',
+    passwordConfirmation: ''
   };
 
   handleInputChange = field => event => this.setState({ [field]: event.target.value });
@@ -19,7 +20,8 @@ class Register extends Component {
     let registerData = {
       email: this.state.email,
       password: this.state.password,
-      name: this.state.name
+      name: this.state.name,
+      password_confirmation: this.state.passwordConfirmation
     };
     this.props.register(registerData);
   };
@@ -42,13 +44,23 @@ class Register extends Component {
             onChange={this.handleInputChange('password')}
           />
           <input
+            type="password"
+            placeholder="Confirm password"
+            value={this.state.passwordConfirmation}
+            onChange={this.handleInputChange('passwordConfirmation')}
+          />
+          <input
             type="text"
             placeholder="Name"
             value={this.state.name}
             onChange={this.handleInputChange('name')}
           />
           <input type="submit" value="Register" />
-          {this.props.registerError && <p>registerError</p>}
+          <div>
+            <p style={{ color: "red" }}>{ this.props.registerError.email }</p>
+            <p style={{ color: "red" }}>{ this.props.registerError.password }</p>
+            <p style={{ color: "red" }}>{ this.props.registerError.name }</p>
+          </div>
         </form>
       </div>
     );

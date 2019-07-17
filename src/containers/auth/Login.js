@@ -40,7 +40,9 @@ class Login extends Component {
             onChange={this.handleInputChange('password')}
           />
           <input type="submit" value="Log in" />
-          {this.props.loginError && <p>Login error</p>}
+          {
+            <p style={{ color: "red" }}>{ this.props.loginError.email || this.props.loginError }</p>
+          }
         </form>
       </div>
     );
