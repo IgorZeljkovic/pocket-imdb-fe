@@ -1,12 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MovieCard = ({ movie }) => {
   return (
     <div className="media movie-card">
-      <img src={ movie.image_url } className="mr-3"/>
+      <img src={ movie.image_url } alt={ movie.title } className="mr-3"/>
       <div className="media-body movie-card-body">
-        <h5 className="mt-0">{ movie.title }</h5>
-        <div class="movie-card-description">{ movie.description }</div>
+        <Link to={ `movie/${movie.id}` } className="h4 text-decoration-none font-weight-bold">
+          { movie.title }
+        </Link>
+        <div className="movie-card-description text-muted mt-3">{ movie.description }</div>
       </div>
     </div>
   );
