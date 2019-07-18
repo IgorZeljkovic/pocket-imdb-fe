@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import _ from 'lodash';
+import { values, isString } from 'lodash-es';
 
 import { logIn } from '../../store/actions/AuthActions';
 
@@ -24,12 +24,12 @@ class Login extends Component {
   };
 
   handleErrors = () => (
-    _.isString(this.props.loginError)
+    isString(this.props.loginError)
     ? (
       <p style={{ color: "red" }}>{ this.props.loginError }</p>
     )
     : (
-      _.values(this.props.loginError).map((error, index) => (
+      values(this.props.loginError).map((error, index) => (
         <p style={{ color: "red" }} key={ `${error}_${index}` }>{ error }</p>
       ))
     )
