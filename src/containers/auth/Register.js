@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import _ from 'lodash';
 
 import { register } from '../../store/actions/AuthActions';
 
@@ -26,7 +27,7 @@ class Register extends Component {
     this.props.register(registerData);
   };
 
-  handleErrors = () => Object.values(this.props.registerError).map((error, index) => (
+  handleErrors = () => _.values(this.props.registerError).map((error, index) => (
     <p style={{ color: "red" }} key={ `${error}_${index}` }>{ error }</p>
   ))
 

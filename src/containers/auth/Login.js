@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import _ from 'lodash';
 
 import { logIn } from '../../store/actions/AuthActions';
 
@@ -23,12 +24,12 @@ class Login extends Component {
   };
 
   handleErrors = () => (
-    typeof this.props.loginError === "string"
+    _.isString(this.props.loginError)
     ? (
       <p style={{ color: "red" }}>{ this.props.loginError }</p>
     )
     : (
-      Object.values(this.props.loginError).map((error, index) => (
+      _.values(this.props.loginError).map((error, index) => (
         <p style={{ color: "red" }} key={ `${error}_${index}` }>{ error }</p>
       ))
     )
