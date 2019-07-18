@@ -26,6 +26,10 @@ class Register extends Component {
     this.props.register(registerData);
   };
 
+  handleErrors = () => Object.values(this.props.registerError).map((error, index) => (
+    <p style={{ color: "red" }} key={ `${error}_${index}` }>{ error }</p>
+  ))
+
   render() {
     return (
       <div>
@@ -57,9 +61,7 @@ class Register extends Component {
           />
           <input type="submit" value="Register" />
           <div>
-            <p style={{ color: "red" }}>{ this.props.registerError.email }</p>
-            <p style={{ color: "red" }}>{ this.props.registerError.password }</p>
-            <p style={{ color: "red" }}>{ this.props.registerError.name }</p>
+          { this.handleErrors() }
           </div>
         </form>
       </div>

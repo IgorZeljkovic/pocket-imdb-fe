@@ -22,6 +22,18 @@ class Login extends Component {
     this.props.logIn(logInData);
   };
 
+  handleErrors = () => (
+    typeof this.props.loginError === "string"
+    ? (
+      <p style={{ color: "red" }}>{ this.props.loginError }</p>
+    )
+    : (
+      Object.values(this.props.loginError).map((error, index) => (
+        <p style={{ color: "red" }} key={ `${error}_${index}` }>{ error }</p>
+      ))
+    )
+  )
+
   render() {
     return (
       <div>
@@ -40,9 +52,7 @@ class Login extends Component {
             onChange={this.handleInputChange('password')}
           />
           <input type="submit" value="Log in" />
-          {
-            <p style={{ color: "red" }}>{ this.props.loginError.email || this.props.loginError }</p>
-          }
+          { this.handleErrors() }
         </form>
       </div>
     );
