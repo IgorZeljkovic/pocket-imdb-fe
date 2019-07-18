@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { values, isString } from 'lodash-es';
 
 import { logIn } from '../../store/actions/AuthActions';
 
@@ -22,6 +23,18 @@ class Login extends Component {
     this.props.logIn(logInData);
   };
 
+  handleErrors = () => (
+    isString(this.props.loginError)
+    ? (
+      <p style={{ color: "red" }}>{ this.props.loginError }</p>
+    )
+    : (
+      values(this.props.loginError).map((error, index) => (
+        <p style={{ color: "red" }} key={ `${error}_${index}` }>{ error }</p>
+      ))
+    )
+  )
+
   render() {
     return (
       <div>
@@ -40,7 +53,7 @@ class Login extends Component {
             onChange={this.handleInputChange('password')}
           />
           <input type="submit" value="Log in" />
-          {this.props.loginError && <p>Login error</p>}
+          { this.handleErrors() }
         </form>
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { values } from 'lodash-es';
 
 import { register } from '../../store/actions/AuthActions';
 
@@ -8,7 +9,8 @@ class Register extends Component {
   state = {
     email: '',
     password: '',
-    name: ''
+    name: '',
+    passwordConfirmation: ''
   };
 
   handleInputChange = field => event => this.setState({ [field]: event.target.value });
@@ -19,10 +21,15 @@ class Register extends Component {
     let registerData = {
       email: this.state.email,
       password: this.state.password,
-      name: this.state.name
+      name: this.state.name,
+      password_confirmation: this.state.passwordConfirmation
     };
     this.props.register(registerData);
   };
+
+  handleErrors = () => values(this.props.registerError).map((error, index) => (
+    <p style={{ color: "red" }} key={ `${error}_${index}` }>{ error }</p>
+  ))
 
   render() {
     return (
@@ -42,13 +49,21 @@ class Register extends Component {
             onChange={this.handleInputChange('password')}
           />
           <input
+            type="password"
+            placeholder="Confirm password"
+            value={this.state.passwordConfirmation}
+            onChange={this.handleInputChange('passwordConfirmation')}
+          />
+          <input
             type="text"
             placeholder="Name"
             value={this.state.name}
             onChange={this.handleInputChange('name')}
           />
           <input type="submit" value="Register" />
-          {this.props.registerError && <p>registerError</p>}
+          <div>
+          { this.handleErrors() }
+          </div>
         </form>
       </div>
     );
