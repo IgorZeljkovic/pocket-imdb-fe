@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import Login from '../containers/auth/Login';
 import Register from '../containers/auth/Register';
 import Home from '../containers/Home';
+import AppHeader from '../component/AppHeader';
 import { authUser } from '../store/actions/AuthActions';
 
 class AppLayout extends React.Component {
@@ -20,16 +21,23 @@ class AppLayout extends React.Component {
   }
 
   render() {
-    return this.props.user ? (
+    return (
       <div>
-        <Route exact path="/home" component={Home} />
+        <AppHeader user={this.props.user} />
+        {
+          this.props.user ? (
+            <div>
+              <Route exact path="/home" component={Home} />
+            </div>
+          ) : (
+            <div>
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+            </div>
+          )
+        }
       </div>
-    ) : (
-      <div>
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
-      </div>
-    );
+    )
   }
 }
 

@@ -14,11 +14,19 @@ export function* userLogin({ payload }) {
   } catch ({ response }) {
     const errors = response.data.errors || response.data.error;
 
-    if(response.status === 401){
-      AuthService.api.unauthorizedCallback();
-    }
-
     yield put(loginError(errors));
+  }
+}
+
+export function* userLogout() {
+  try {
+    yield call(AuthService.logout)
+
+    yield put(authUser(false));
+    yield put(push('/login'));
+    yield put(go());
+  } catch (error) {
+
   }
 }
 

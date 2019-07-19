@@ -20,12 +20,12 @@ class HttpService {
     return response;
   }
 
-  handleErrorResponse(error) {
+  handleErrorResponse = (error) => {
     const { status } = error.response;
 
     switch (status) {
       case 401: {
-        //this.unauthorizedCallback();
+        this.unauthorizedCallback();
         break;
       }
       default:

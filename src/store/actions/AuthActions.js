@@ -1,4 +1,4 @@
-import { LOGIN, AUTH_USER, REGISTER, LOGIN_ERROR, REGISTER_ERROR } from './ActionTypes';
+import { LOGIN, AUTH_USER, REGISTER, LOGOUT, LOGIN_ERROR, REGISTER_ERROR } from './ActionTypes';
 
 export const logIn = logInData => {
   return {
@@ -6,6 +6,13 @@ export const logIn = logInData => {
     payload: logInData
   };
 };
+
+export const logout = () => {
+  return {
+    type: LOGOUT,
+    payload: false
+  }
+}
 
 export const register = registerData => {
   return {
