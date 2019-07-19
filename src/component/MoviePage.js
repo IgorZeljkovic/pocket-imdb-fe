@@ -32,7 +32,7 @@ const MoviePage = ({ match, getMovieById }) => {
   )
 }
 
-function mapStateToProps (state) {
+const mapStateToProps = (state) => {
   return {
     getMovieById: movieByIdSelector(state)
   }
