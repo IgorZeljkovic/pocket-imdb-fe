@@ -1,4 +1,4 @@
-import { GET_MOVIES, SET_MOVIES } from './ActionTypes';
+import { GET_MOVIES, SET_MOVIES, GET_MOVIES_PAGE } from './ActionTypes';
 
 export const getMovies = () => {
   return {
@@ -12,3 +12,10 @@ export const setMovies = payload => {
     payload
   };
 };
+
+export const getMoviesPage = url => {
+  return {
+    type: GET_MOVIES_PAGE,
+    payload: url
+  }
+}
