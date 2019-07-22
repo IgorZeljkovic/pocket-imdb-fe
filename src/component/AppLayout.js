@@ -7,6 +7,7 @@ import Login from '../containers/auth/Login';
 import Register from '../containers/auth/Register';
 import Home from '../containers/Home';
 import AppHeader from '../component/AppHeader';
+import MoviePage from '../component/MoviePage';
 import { authUser } from '../store/actions/AuthActions';
 
 class AppLayout extends React.Component {
@@ -28,6 +29,7 @@ class AppLayout extends React.Component {
           this.props.user ? (
             <div>
               <Route exact path="/home" component={Home} />
+              <Route path="/movie/:id" component={MoviePage} />
             </div>
           ) : (
             <div>
