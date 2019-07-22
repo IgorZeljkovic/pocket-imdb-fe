@@ -53,7 +53,7 @@ function Pagination ({ getMoviesPage, pagination }) {
 
 const mapStateToProps = (state) => {
   return {
-    pagination: state.movie.pagination
+    pagination: state.movies.pagination
   }
 }
 

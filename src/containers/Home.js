@@ -32,7 +32,7 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
     movies: state.movies.all,
-    pagination: state.movie.pagination
+    pagination: state.movies.pagination
   };
 };
 
