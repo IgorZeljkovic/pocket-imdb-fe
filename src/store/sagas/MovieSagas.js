@@ -12,3 +12,13 @@ export function* moviesGet() {
     console.log({ error }); /*eslint-disable-line*/
   }
 }
+
+export function* moviesPageGet({ payload }) {
+  try {
+    const { data } = yield call(movieService.getMoviesPage, payload);
+
+    yield put(setMovies(data));
+  } catch (error) {
+    console.log({ error })
+  }
+}

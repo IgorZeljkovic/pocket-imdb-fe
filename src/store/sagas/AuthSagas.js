@@ -26,7 +26,7 @@ export function* userLogout() {
     yield put(push('/login'));
     yield put(go());
   } catch (error) {
-    
+    console.log(error)
   }
 }
 
