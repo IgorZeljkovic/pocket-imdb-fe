@@ -1,13 +1,14 @@
 import { call, put } from 'redux-saga/effects';
 
 import { movieService } from '../../services/MovieService';
-import { setMovies } from '../actions/MovieActions';
+import { setMovies, setSearchQuery } from '../actions/MovieActions';
 
-export function* moviesGet() {
+export function* moviesGet({ payload }) {
   try {
-    const { data } = yield call(movieService.getMovies);
+    const { data } = yield call(movieService.getMovies, payload);
 
     yield put(setMovies(data));
+    yield put(setSearchQuery(payload));
   } catch (error) {
     console.log({ error }); /*eslint-disable-line*/
   }
@@ -19,6 +20,17 @@ export function* moviesPageGet({ payload }) {
 
     yield put(setMovies(data));
   } catch (error) {
-    console.log({ error })
+    console.log({ error });
+  }
+}
+
+export function* moviesSearch({ payload }) {
+  try {
+    const { data } = yield call(movieService.searchMovies, payload);
+
+    yield put(setMovies(data));
+    yield put(setSearchQuery(payload));
+  } catch (error) {
+    console.log({ error });
   }
 }

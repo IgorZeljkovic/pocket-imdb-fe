@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { toPairs } from 'lodash-es';
 
 import { getMoviesPage } from '../store/actions/MovieActions';
 
-function Pagination ({ getMoviesPage, pagination }) {
+function Pagination ({ getMoviesPage, pagination, query }) {
 
   const isDisabled = (btn) => {
     switch (btn) {
@@ -20,6 +21,8 @@ function Pagination ({ getMoviesPage, pagination }) {
     }
   }
 
+  const queryParams = () => toPairs(query).map(([key, value]) => `&${key}=${value}`)
+
   return (
     <div className="container mt-3">
       <nav aria-label="Page navigation">
@@ -27,7 +30,7 @@ function Pagination ({ getMoviesPage, pagination }) {
           <li className={ isDisabled('prev') }>
             <button
               className="page-link"
-              onClick={ () => getMoviesPage(pagination.prev_page_url) }
+              onClick={ () => getMoviesPage(pagination.prev_page_url + queryParams()) }
             >
               Previous
             </button>
@@ -40,7 +43,7 @@ function Pagination ({ getMoviesPage, pagination }) {
           <li className={ isDisabled('next') }>
             <button 
               className="page-link" 
-              onClick={ () => getMoviesPage(pagination.next_page_url) }
+              onClick={ () => getMoviesPage(pagination.next_page_url + queryParams()) }
             >
               Next
             </button>
@@ -53,7 +56,8 @@ function Pagination ({ getMoviesPage, pagination }) {
 
 const mapStateToProps = (state) => {
   return {
-    pagination: state.movie.pagination
+    pagination: state.movie.pagination,
+    query: state.movie.searchQuery
   }
 }
 

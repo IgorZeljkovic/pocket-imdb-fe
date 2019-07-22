@@ -10,3 +10,5 @@ export const REGISTER_ERROR = 'REGISTER_ERROR';
 export const GET_MOVIES = 'GET_MOVIES';
 export const SET_MOVIES = 'SET_MOVIES';
 export const GET_MOVIES_PAGE = 'GET_MOVIES_PAGE';
+export const SEARCH_MOVIES = 'SEARCH_MOVIES';
+export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';
