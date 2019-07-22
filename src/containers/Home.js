@@ -31,7 +31,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    movies: state.movie.all,
+    movies: state.movies.all,
     pagination: state.movie.pagination
   };
 };
