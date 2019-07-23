@@ -19,12 +19,12 @@ export const setMovies = payload => {
   };
 };
 
-export const getMoviesPage = url => {
+export const getPaginatedMovies = url => {
   return {
     type: GET_MOVIES_PAGE,
     payload: url
-  };
-};
+  }
+}
 
 export const setSearchQuery = payload => {
   return {
@@ -32,3 +32,4 @@ export const setSearchQuery = payload => {
     payload
   }
 }
+

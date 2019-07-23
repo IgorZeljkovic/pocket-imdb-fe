@@ -2,24 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { toPairs } from 'lodash-es';
 
-import { getMoviesPage } from '../store/actions/MovieActions';
+import { getPaginatedMovies } from '../store/actions/MovieActions';
 
-function Pagination ({ getMoviesPage, pagination, query }) {
+function Pagination ({ getPaginatedMovies, pagination, query }) {
 
-  const isDisabled = (btn) => {
+  const buttonClasses = (btn) => {
     switch (btn) {
       case 'prev':
-        return pagination.current_page === 1
-        ? 'page-item disabled'
-        : 'page-item'
+        return hasPrevious()
+        ? 'page-item'
+        : 'page-item disabled'
       case 'next':
-        return pagination.current_page === pagination.last_page
-        ? 'page-item disabled'
-        : 'page-item'
+        return hasNext()
+        ? 'page-item'
+        : 'page-item disabled'
       default:
         return 'page-item'
     }
   }
+
+  const hasNext = () => pagination.current_page !== pagination.last_page;
+  const hasPrevious = () => pagination.current_page !== 1;
 
   const queryParams = () => toPairs(query).map(([key, value]) => `&${key}=${value}`)
 
@@ -27,10 +30,10 @@ function Pagination ({ getMoviesPage, pagination, query }) {
     <div className="container mt-3">
       <nav aria-label="Page navigation">
         <ul className="pagination justify-content-center">
-          <li className={ isDisabled('prev') }>
+          <li className={ buttonClasses('prev') }>
             <button
               className="page-link"
-              onClick={ () => getMoviesPage(pagination.prev_page_url + queryParams()) }
+              onClick={ () => getPaginatedMovies(pagination.prev_page_url + queryParams()) }
             >
               Previous
             </button>
@@ -40,10 +43,10 @@ function Pagination ({ getMoviesPage, pagination, query }) {
               { pagination.current_page }
             </p>
           </li>
-          <li className={ isDisabled('next') }>
+          <li className={ buttonClasses('next') }>
             <button 
               className="page-link" 
-              onClick={ () => getMoviesPage(pagination.next_page_url + queryParams()) }
+              onClick={ () => getPaginatedMovies(pagination.next_page_url + queryParams()) }
             >
               Next
             </button>
@@ -56,13 +59,13 @@ function Pagination ({ getMoviesPage, pagination, query }) {
 
 const mapStateToProps = (state) => {
   return {
-    pagination: state.movie.pagination,
-    query: state.movie.searchQuery
+    pagination: state.movies.pagination,
+    query: state.movies.searchQuery
   }
 }
 
 const mapDispatchToProps = {
-  getMoviesPage
+  getPaginatedMovies
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pagination);

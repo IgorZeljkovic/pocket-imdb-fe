@@ -23,14 +23,3 @@ export function* moviesPageGet({ payload }) {
     console.log({ error });
   }
 }
-
-export function* moviesSearch({ payload }) {
-  try {
-    const { data } = yield call(movieService.searchMovies, payload);
-
-    yield put(setMovies(data));
-    yield put(setSearchQuery(payload));
-  } catch (error) {
-    console.log({ error });
-  }
-}
