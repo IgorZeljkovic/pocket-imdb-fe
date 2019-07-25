@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects';
 
 import { movieService } from '../../services/MovieService';
-import { setMovies, setSearchQuery, setVotedMovie } from '../actions/MovieActions';
+import { setMovies, setSearchQuery, setMovie } from '../actions/MovieActions';
 
 export function* moviesGet({ payload }) {
   try {
@@ -28,7 +28,7 @@ export function* moviesVoteNew({ payload }) {
   try {
     const { data } = yield call(movieService.newVote, payload);
 
-    yield put(setVotedMovie(data));
+    yield put(setMovie(data));
   } catch (error) {
 
   }
@@ -38,7 +38,7 @@ export function* moviesVoteRemove({ payload }) {
   try {
     const { data } = yield call(movieService.removeVote, payload);
 
-    yield put(setVotedMovie(data));
+    yield put(setMovie(data));
   } catch (error) {
     
   }
@@ -48,8 +48,18 @@ export function* moviesVoteUpdate({ payload }) {
   try {
     const { data } = yield call(movieService.updateVote, payload);
 
-    yield put(setVotedMovie(data));
+    yield put(setMovie(data));
   } catch (error) {
     
+  }
+}
+
+export function* movieVisit({ payload }) {
+  try {
+    const { data } = yield call(movieService.visitMovie, payload);
+
+    yield put(setMovie(data));
+  } catch (error) {
+
   }
 }

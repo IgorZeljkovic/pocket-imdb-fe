@@ -6,10 +6,18 @@ import {
   REGISTER,
   NEW_VOTE,
   REMOVE_VOTE,
-  UPDATE_VOTE
+  UPDATE_VOTE,
+  VISIT_MOVIE
 } from '../actions/ActionTypes';
 import { userLogin, userLogout, userRegister } from './AuthSagas';
-import { moviesGet, moviesPageGet, moviesVoteNew, moviesVoteRemove, moviesVoteUpdate } from './MovieSagas';
+import {
+  moviesGet,
+  moviesPageGet,
+  moviesVoteNew,
+  moviesVoteRemove,
+  moviesVoteUpdate,
+  movieVisit
+ } from './MovieSagas';
 
 export default function* rootSaga() {
   yield all([
@@ -20,6 +28,7 @@ export default function* rootSaga() {
     takeLatest(GET_MOVIES_PAGE, moviesPageGet),
     takeLatest(NEW_VOTE, moviesVoteNew),
     takeLatest(REMOVE_VOTE, moviesVoteRemove),
-    takeLatest(UPDATE_VOTE, moviesVoteUpdate)
+    takeLatest(UPDATE_VOTE, moviesVoteUpdate),
+    takeLatest(VISIT_MOVIE, movieVisit)
   ]);
 }

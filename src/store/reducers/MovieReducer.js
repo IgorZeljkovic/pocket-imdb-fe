@@ -1,4 +1,4 @@
-import { SET_MOVIES, SET_SEARCH_QUERY, SET_VOTED_MOVIE } from '../actions/ActionTypes';
+import { SET_MOVIES, SET_SEARCH_QUERY, SET_MOVIE } from '../actions/ActionTypes';
 
 const initialState = {
   all: [],
@@ -14,7 +14,7 @@ const movieReducer = (state = initialState, action) => {
         ...state,
         searchQuery: action.payload
       }
-    case SET_VOTED_MOVIE:
+    case SET_MOVIE:
       return {
         ...state,
         all: state.all.map(movie => movie.id === action.payload.id ? action.payload : movie)
