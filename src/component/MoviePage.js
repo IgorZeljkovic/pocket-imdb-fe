@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import { movieByIdSelector } from '../store/selectors/movieSelector';
+import VoteButtons from './VoteButtons';
 
 const MoviePage = ({ match, getMovieById }) => {
   const { id } = match.params;
@@ -13,6 +14,7 @@ const MoviePage = ({ match, getMovieById }) => {
       <div className="col-md-10">
         <div className="container p-4">
           <h3 className="font-weight-bold">{ movie.title }</h3>
+          <VoteButtons movie={ movie } />
           <div className="row">
             <div className="col-sm-4 conteiner">
               <img src={ movie.image_url } alt={ movie.title } className="movie-poster img-responsive" />
