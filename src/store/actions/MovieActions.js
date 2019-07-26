@@ -7,7 +7,8 @@ import {
   NEW_VOTE,
   REMOVE_VOTE,
   UPDATE_VOTE,
-  VISIT_MOVIE
+  VISIT_MOVIE,
+  FILTER_MOVIES
 } from './ActionTypes';
 
 export const getMovies = payload => {
@@ -69,6 +70,13 @@ export const setMovie = payload => {
 export const visitMovie = payload => {
   return {
     type: VISIT_MOVIE,
+    payload
+  }
+}
+
+export const filterMovies = payload => {
+  return {
+    type: FILTER_MOVIES,
     payload
   }
 }

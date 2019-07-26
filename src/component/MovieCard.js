@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import VoteButtons from './VoteButtons';
 import MovieVisits from './MovieVisits';
+import MovieGenre from './MovieGenre';
 
 const MovieCard = ({ movie }) => {
   return (
@@ -16,7 +17,10 @@ const MovieCard = ({ movie }) => {
             </Link>
             <MovieVisits visitsNumber={ movie.visits_number } />
           </span>
-          <VoteButtons movie={movie} />
+          <VoteButtons movie={ movie } />
+        </div>
+        <div>
+          <MovieGenre genre={ movie.genre } />
         </div>
         <div className="movie-card-description text-muted mt-3">{ movie.description }</div>
       </div>

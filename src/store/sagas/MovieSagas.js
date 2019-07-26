@@ -63,3 +63,14 @@ export function* movieVisit({ payload }) {
 
   }
 }
+
+export function* moviesFilter({ payload }) {
+  try {
+    const { data } = yield call(movieService.filterMovies, payload);
+
+    yield put(setMovies(data));
+    yield put(setSearchQuery(payload));
+  } catch (error) {
+    
+  }
+}
