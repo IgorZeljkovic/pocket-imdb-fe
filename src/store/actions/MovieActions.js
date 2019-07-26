@@ -3,10 +3,11 @@ import {
   SET_MOVIES, 
   GET_MOVIES_PAGE,
   SET_SEARCH_QUERY,
-  SET_VOTED_MOVIE,
+  SET_MOVIE,
   NEW_VOTE,
   REMOVE_VOTE,
-  UPDATE_VOTE
+  UPDATE_VOTE,
+  VISIT_MOVIE
 } from './ActionTypes';
 
 export const getMovies = payload => {
@@ -58,9 +59,16 @@ export const updateVote = payload => {
   }
 }
 
-export const setVotedMovie = payload => {
+export const setMovie = payload => {
   return {
-    type: SET_VOTED_MOVIE,
+    type: SET_MOVIE,
+    payload
+  }
+}
+
+export const visitMovie = payload => {
+  return {
+    type: VISIT_MOVIE,
     payload
   }
 }
