@@ -12,7 +12,7 @@ const MovieCard = ({ movie }) => {
           <Link to={ `movie/${movie.id}` } className="h4 text-decoration-none font-weight-bold">
             { movie.title }
           </Link>
-          <VoteButtons movie={movie} />
+          <VoteButtons movie={ movie } />
         </div>
         <div className="movie-card-description text-muted mt-3">{ movie.description }</div>
       </div>
