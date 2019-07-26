@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../store/actions/AuthActions';
+import SearchMovie from './SearchMovie';
 
 function AppHeader({ user, logout }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand navbar-light bg-light">
       <Link className="navbar-brand" to="/home">Pocket IMDB</Link>
       <div className="collapse navbar-collapse justify-content-end">
         
@@ -13,6 +14,7 @@ function AppHeader({ user, logout }) {
             user
             ? (
               <ul className="navbar-nav ">
+                <SearchMovie />
                 <li className="nav-item">
                   <Link
                     className="nav-link"

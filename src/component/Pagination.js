@@ -59,7 +59,8 @@ function Pagination ({ getPaginatedMovies, pagination, query }) {
 
 const mapStateToProps = (state) => {
   return {
-    pagination: state.movies.pagination
+    pagination: state.movies.pagination,
+    query: state.movies.searchQuery
   }
 }
 

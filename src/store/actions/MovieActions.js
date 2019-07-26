@@ -1,8 +1,14 @@
-import { GET_MOVIES, SET_MOVIES, GET_MOVIES_PAGE } from './ActionTypes';
+import { 
+  GET_MOVIES,
+  SET_MOVIES, 
+  GET_MOVIES_PAGE,
+  SET_SEARCH_QUERY
+} from './ActionTypes';
 
-export const getMovies = () => {
+export const getMovies = payload => {
   return {
-    type: GET_MOVIES
+    type: GET_MOVIES,
+    payload
   };
 };
 
@@ -19,3 +25,11 @@ export const getPaginatedMovies = url => {
     payload: url
   }
 }
+
+export const setSearchQuery = payload => {
+  return {
+    type: SET_SEARCH_QUERY,
+    payload
+  }
+}
+
