@@ -1,7 +1,8 @@
 import ApiService from './ApiService';
 
 const ENDPOINTS = {
-  MOVIES: '/api/movies?title='
+  MOVIES: '/api/movies?title=',
+  vote: (type, votableId) => `/api/movies/${votableId}/vote/${type}`
 };
 
 class MovieService extends ApiService {
@@ -11,6 +12,18 @@ class MovieService extends ApiService {
 
   getMoviesPage = url => {
     return this.apiClient.get(url);
+  }
+
+  newVote = ({ type, votableId }) => {
+    return this.apiClient.post(ENDPOINTS.vote(type, votableId));
+  }
+
+  removeVote = ({ type, votableId }) => {
+    return this.apiClient.delete(ENDPOINTS.vote(type, votableId));
+  }
+
+  updateVote = ({ type, votableId }) => {
+    return this.apiClient.put(ENDPOINTS.vote(type, votableId));
   }
 }
 

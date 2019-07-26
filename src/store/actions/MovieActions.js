@@ -2,7 +2,11 @@ import {
   GET_MOVIES,
   SET_MOVIES, 
   GET_MOVIES_PAGE,
-  SET_SEARCH_QUERY
+  SET_SEARCH_QUERY,
+  SET_VOTED_MOVIE,
+  NEW_VOTE,
+  REMOVE_VOTE,
+  UPDATE_VOTE
 } from './ActionTypes';
 
 export const getMovies = payload => {
@@ -33,3 +37,30 @@ export const setSearchQuery = payload => {
   }
 }
 
+export const newVote = payload => {
+  return {
+    type: NEW_VOTE,
+    payload
+  }
+}
+
+export const removeVote = payload => {
+  return {
+    type: REMOVE_VOTE,
+    payload
+  }
+}
+
+export const updateVote = payload => {
+  return {
+    type: UPDATE_VOTE,
+    payload
+  }
+}
+
+export const setVotedMovie = payload => {
+  return {
+    type: SET_VOTED_MOVIE,
+    payload
+  }
+}
