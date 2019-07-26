@@ -7,9 +7,7 @@ import { getMovies } from '../store/actions/MovieActions';
 const SearchMovie = ({ getMovies }) => {
   
   const search = debounce(title => {
-    getMovies({
-      title: title
-    });
+    getMovies({ title });
   }, 750)
 
   const handleSearch = (event) => {
