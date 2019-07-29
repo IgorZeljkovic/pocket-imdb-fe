@@ -5,11 +5,13 @@ import { Redirect } from 'react-router-dom';
 import { movieByIdSelector } from '../store/selectors/movieSelector';
 import VoteButtons from './VoteButtons';
 import MovieVisits from './MovieVisits';
-import { visitMovie } from '../store/actions/MovieActions';
+import { visitMovie, addComment } from '../store/actions/MovieActions';
 import MovieGenre from './MovieGenre';
+import CommentsList from './CommentsList';
 
 class MoviePage extends Component {
-  componentDidMount () {
+
+  async componentDidMount () {
     this.props.visitMovie(this.props.match.params.id);
   }
   
@@ -37,6 +39,7 @@ class MoviePage extends Component {
               </div>
             </div>
           </div>
+          <CommentsList movieId={ id } />
         </div>
         <div className="col-md-2">
           related movies
@@ -49,7 +52,8 @@ class MoviePage extends Component {
 }
 
 const mapDispatchToProps = {
-  visitMovie
+  visitMovie,
+  addComment
 }
 
 const mapStateToProps = (state) => {
