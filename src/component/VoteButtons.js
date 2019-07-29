@@ -4,15 +4,20 @@ import { connect } from 'react-redux';
 
 import { newVote, removeVote, updateVote } from '../store/actions/MovieActions';
 
-const VoteButtons = ({ movie, newVote, removeVote, updateVote }) => {
+const VOTE_TYPE = {
+  LIKE: 'like',
+  DISLIKE: 'dislike'
+}
 
+const VoteButtons = ({ movie, newVote, removeVote, updateVote }) => {
+  
   const like = {
-    type: 'like',
+    type: VOTE_TYPE.LIKE,
     votableId: movie.id
   }
 
   const dislike = {
-    type: 'dislike',
+    type: VOTE_TYPE.DISLIKE,
     votableId: movie.id
   }
 
