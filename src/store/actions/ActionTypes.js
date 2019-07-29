@@ -18,3 +18,4 @@ export const REMOVE_VOTE = 'REMOVE_VOTE';
 export const UPDATE_VOTE = 'UPDATE_VOTE';
 
 export const VISIT_MOVIE = 'VISIT_MOVIE';
+export const FILTER_MOVIES = 'FILTER_MOVIES';

@@ -1,15 +1,19 @@
 import ApiService from './ApiService';
 
 const ENDPOINTS = {
-  movies: '/api/movies?title=',
+  movies: '/api/movies?',
   vote: (type, votableId) => `/api/movies/${votableId}/vote/${type}`,
   visit: (movieId) => `api/movies/${movieId}/visit`
 };
 
 class MovieService extends ApiService {
   getMovies = params => {
-    return this.apiClient.get(`${ENDPOINTS.movies}${params ? params.title : ''}`);
+    return this.apiClient.get(`${ENDPOINTS.movies}title=${params ? params.title : ''}`);
   };
+
+  filterMovies = params => {
+    return this.apiClient.get(`${ENDPOINTS.movies}genre=${params ? params.genre : ''}`)
+  }
 
   getMoviesPage = url => {
     return this.apiClient.get(url);

@@ -6,6 +6,7 @@ import { movieByIdSelector } from '../store/selectors/movieSelector';
 import VoteButtons from './VoteButtons';
 import MovieVisits from './MovieVisits';
 import { visitMovie } from '../store/actions/MovieActions';
+import MovieGenre from './MovieGenre';
 
 class MoviePage extends Component {
   componentDidMount () {
@@ -21,6 +22,7 @@ class MoviePage extends Component {
         <div className="col-md-10">
           <div className="container p-4">
             <h3 className="font-weight-bold">{ movie.title }</h3>
+            <MovieGenre genre={ movie.genre } />
             <div>
               <MovieVisits visitsNumber={ movie.visits_number } />
             </div>

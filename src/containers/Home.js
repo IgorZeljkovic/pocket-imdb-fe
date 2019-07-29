@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { getMovies } from '../store/actions/MovieActions';
 import MovieCard from '../component/MovieCard';
 import Pagination from '../component/Pagination';
+import MovieFilter from '../component/MovieFilter';
 
 class Home extends Component {
   componentDidMount() {
@@ -18,9 +19,12 @@ class Home extends Component {
   render() {
     return (
       <div className="container">
+        <div className="container">
+          <MovieFilter />
+        </div>
         <Pagination />
         <div className="container">
-          {this.renderMovies()}
+          { this.renderMovies() }
         </div>
         <Pagination />
       </div>

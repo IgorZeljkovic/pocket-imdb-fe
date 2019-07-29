@@ -7,7 +7,8 @@ import {
   NEW_VOTE,
   REMOVE_VOTE,
   UPDATE_VOTE,
-  VISIT_MOVIE
+  VISIT_MOVIE,
+  FILTER_MOVIES
 } from '../actions/ActionTypes';
 import { userLogin, userLogout, userRegister } from './AuthSagas';
 import {
@@ -16,7 +17,8 @@ import {
   moviesVoteNew,
   moviesVoteRemove,
   moviesVoteUpdate,
-  movieVisit
+  movieVisit,
+  moviesFilter
  } from './MovieSagas';
 
 export default function* rootSaga() {
@@ -29,6 +31,7 @@ export default function* rootSaga() {
     takeLatest(NEW_VOTE, moviesVoteNew),
     takeLatest(REMOVE_VOTE, moviesVoteRemove),
     takeLatest(UPDATE_VOTE, moviesVoteUpdate),
-    takeLatest(VISIT_MOVIE, movieVisit)
+    takeLatest(VISIT_MOVIE, movieVisit),
+    takeLatest(FILTER_MOVIES, moviesFilter)
   ]);
 }
