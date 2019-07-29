@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { movieByIdSelector } from '../store/selectors/movieSelector';
 import VoteButtons from './VoteButtons';
 import MovieVisits from './MovieVisits';
-import { visitMovie, addComment } from '../store/actions/MovieActions';
+import { visitMovie } from '../store/actions/MovieActions';
 import MovieGenre from './MovieGenre';
 import CommentsList from './CommentsList';
 
@@ -52,8 +52,7 @@ class MoviePage extends Component {
 }
 
 const mapDispatchToProps = {
-  visitMovie,
-  addComment
+  visitMovie
 }
 
 const mapStateToProps = (state) => {
