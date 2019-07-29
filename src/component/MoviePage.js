@@ -7,9 +7,11 @@ import VoteButtons from './VoteButtons';
 import MovieVisits from './MovieVisits';
 import { visitMovie } from '../store/actions/MovieActions';
 import MovieGenre from './MovieGenre';
+import CommentsList from './CommentsList';
 
 class MoviePage extends Component {
-  componentDidMount () {
+
+  async componentDidMount () {
     this.props.visitMovie(this.props.match.params.id);
   }
   
@@ -37,6 +39,7 @@ class MoviePage extends Component {
               </div>
             </div>
           </div>
+          <CommentsList movieId={ id } />
         </div>
         <div className="col-md-2">
           related movies
